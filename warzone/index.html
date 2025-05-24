@@ -1,50 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
 
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163573133-1"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="An interactive map of Verdansk from Warzone in Call of Duty Modern Warfare">
+	<meta name="author" content="John Goodliff">
+	<title>Warzone Map</title>
 
-			gtag('config', 'UA-163573133-1');
-		</script>
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#121212">
+	<meta name="msapplication-TileColor" content="#121212">
+	<meta name="theme-color" content="#121212">
 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<meta name="description" content="An interactive map of Verdansk from Warzone in Call of Duty Modern Warfare">
-		<meta name="author" content="John Goodliff">
-		<title>Warzone Map</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+	<link rel='stylesheet' href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" />
+	<link rel="stylesheet" href="style.css" />
 
-		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-		<link rel="manifest" href="site.webmanifest">
-		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#121212">
-		<meta name="msapplication-TileColor" content="#121212">
-		<meta name="theme-color" content="#121212">
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script>
 
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-		<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-		<link rel='stylesheet' href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" />
-		<link rel="stylesheet" href="style.css" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@900&display=swap">
-		<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script>
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"></script>
+</head>
 
-		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"></script>
-	</head>
 <body>
 	<div id="panel">
 		<h1>Warzone Map</h1>
 		<div id="layers">
 			<h2>Layers</h2>
 
-			<label class="heading">
+			<!-- <label class="heading">
 				<input type="checkbox" name="locations" value="Locations" disabled>
 				Locations
 			</label>
@@ -67,9 +61,9 @@
 						Coordinates
 					</label>
 				</li>
-			</ul>
+			</ul> -->
 
-			<label class="heading">
+			<!-- <label class="heading">
 				<input type="checkbox" name="objects" value="Objects" disabled>
 				Objects
 			</label>
@@ -86,7 +80,7 @@
 						Buy Station
 					</label>
 				</li>
-			</ul>
+			</ul> -->
 
 			<label class="heading">
 				<input type="checkbox" name="vehicles" value="Vehicles" checked>
@@ -128,10 +122,35 @@
 
 		<div>
 			<h2>About</h2>
+			<p>
+				An interactive map of Verdansk from Warzone in Call of Duty Modern Warfare. See the locations of vehicles, ammo caches, and buy stations. Note that this map is of the original version of Verdansk, so spawn locations may no longer be accurate.
+			</p>
+			<p>
+				This project is licensed under the <a href="https://github.com/jerboa88/Game-Maps/blob/gh-pages/LICENSE" rel="license">MPL 2.0 License</a> and the source code for this project is available on <a href="https://github.com/jerboa88/Game-Maps">GitHub</a>. If you encounter any bugs, please <a href="https://github.com/jerboa88/Game-Maps/issues">open an issue</a>.
+			</p>
+			<p>
+				Keep in mind that is an archived project, so I will only be able to fix issues that severely impact the functionality of the site.
+			</p>
+		</div>
 
-			<p>An interactive map of Verdansk from Warzone in Call of Duty Modern Warfare. See the locations of vehicles, ammo caches, and buy stations</p>
-			<p>Site made by <a href="https://johng.io/">John Goodliff</a>. Map data from Call of Duty: Modern Warfare by <a href="https://www.activision.com/">Activision</a>. Map powered by <a href="https://leafletjs.com/">Leaflet</a>. Modified bullet icon created from the original by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>. Up arrow icon from the <a href="https://www.flaticon.com/authors/smashicons">Material Design iconset</a>. Check the project out on <a href="https://github.com/jerboa88/Game-Maps">Github</a>.</p>
-			<p><b>This is a work in progress and contributions are welcome.</b> Please report any issues <a href="https://github.com/jerboa88/Game-Maps/issues">here</a>.</p>
+		<div>
+			<h2>Credits</h2>
+			<p>
+				Map data from Call of Duty: Modern Warfare by <a href="https://www.activision.com/">Activision</a>. Map powered by <a href="https://leafletjs.com/">Leaflet</a>. Modified bullet icon created from the original by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>. Up arrow icon from the <a href="https://www.flaticon.com/authors/smashicons">Material Design iconset</a>.
+			</p>
+			<p>
+				Handcrafted with ❤️ by <a href="https://johng.io" rel="author">John Goodliff</a>. If you find this tool useful, please consider <a href="https://johng.io/funding" rel="external">sponsoring me</a>.
+			</p>
+		</div>
+
+		<div>
+			<h2>Privacy</h2>
+			<p>
+				This site may collect anonymized usage analytics. These are used to monitor traffic trends, detect potential threats, and improve the site. This data is not used for tracking or marketing.
+			</p>
+			<p>
+				See the <a href="https://johng.io/privacy-policy" rel="external">full privacy policy</a> for more details. By using this site to agree to these terms.
+			</p>
 		</div>
 	</div>
 	<div id="map">
@@ -140,4 +159,5 @@
 
 	<script src="script.js"></script>
 </body>
+
 </html>

@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: defaults
+*/
+
 :root {
 	--bg-color: #121212;
 	--control-bg-color: #212121;
@@ -5,36 +12,42 @@
 	--disabled-fg-color: #333;
 	--text-color: #fff;
 	--accent-color: salmon;
-	--control-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	--control-shadow-hover: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-	--control-shadow-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-
-
-::selection {
-  background: var(--accent-color);
+	--control-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	--control-shadow-hover: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
+		rgba(0, 0, 0, 0.22);
+	--control-shadow-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 ::-moz-selection {
-  background: var(--accent-color);
+	background: var(--accent-color);
 }
 
-html, body {
+::selection {
+	background: var(--accent-color);
+}
+
+::-moz-selection {
+	background: var(--accent-color);
+}
+
+html,
+body {
 	margin: 0;
 	padding: 0;
-	background: #121212;
+	background: var(--bg-color);
 	scroll-behavior: smooth;
 }
 
 body {
 	display: flex;
 	flex-direction: column;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	color: var(--text-color);
 }
 
-body, body * {
+body,
+body * {
 	outline-color: var(--accent-color);
 }
 
@@ -95,7 +108,8 @@ a:active {
 	color: var(--accent-color);
 }
 
-.leaflet-control-scale-line, .leaflet-control-scale-line:not(:first-child) {
+.leaflet-control-scale-line,
+.leaflet-control-scale-line:not(:first-child) {
 	margin-top: 0;
 	padding: 5px 5px 1px;
 	border-top: none;
@@ -108,15 +122,14 @@ a:active {
 	transition: var(--control-shadow-transition);
 }
 
-.leaflet-control-scale-line:hover, .leaflet-control-scale-line:not(:first-child):hover {
+.leaflet-control-scale-line:hover,
+.leaflet-control-scale-line:not(:first-child):hover {
 	box-shadow: var(--control-shadow-hover);
 }
 
 .leaflet-left .leaflet-control-scale {
 	margin: 0;
 }
-
-
 
 /* Side panel */
 #panel {
@@ -129,19 +142,23 @@ a:active {
 	background: url(img/bg_transparent.png), url(img/noise_transparent.png);
 	background-size: cover, 70vh;
 	background-position: center, center;
+	image-rendering: -moz-crisp-edges;
 	image-rendering: pixelated;
 	box-shadow: var(--control-shadow-hover);
 }
 
 h1 {
 	margin: 0;
-	font-family: 'Titillium Web', Haettenschweiler, Impact, 'Arial Narrow Bold', sans-serif;
+	font-family: "Titillium Web", Haettenschweiler, Impact, "Arial Narrow Bold",
+		sans-serif;
 	font-size: 3.5em;
 	text-align: center;
 	color: var(--text-color);
 }
 
-p, a:link, li {
+p,
+a:link,
+li {
 	font-size: .8rem;
 }
 
@@ -157,18 +174,22 @@ ul {
 
 label {
 	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
 	user-select: none;
 }
 
-input[type=checkbox]:disabled {
+input[type="checkbox"] {
+	accent-color: var(--accent-color);
+}
+
+input[type="checkbox"]:disabled {
 	cursor: not-allowed;
 }
 
 li {
 	list-style-type: none;
 }
-
-
 
 /* Media queries */
 @media (orientation: landscape) {
@@ -181,7 +202,7 @@ li {
 		height: 100vh;
 		overflow: hidden;
 		flex: 1 0 auto;
-		border-right: 2px solid #212121;
+		border-right: 2px solid var(--control-bg-color);
 	}
 
 	#map {
@@ -195,26 +216,21 @@ li {
 
 @media (orientation: portrait) {
 	body {
-		min-height: 200vh;
 		flex-direction: column-reverse;
 	}
 
 	#panel {
 		flex: 1 1 50%;
-		border-top: 2px solid #212121;
+		border-top: 2px solid var(--control-bg-color);
 	}
 
 	#map {
-		flex: 1 0 50%;
-		min-height: calc(100vh - 56px);	/* Dirty hack to adjust vh for url bar in Chrome mobile */
-		/* min-height: -webkit-fill-available; */
-		/* min-height: 50%; */
+		min-height: 100svh;
 	}
 
 	#button {
-		content: '';
-		width: 72px;
-		height: 36px;
+		width: 96px;
+		height: 48px;
 		left: 0;
 		right: 0;
 		bottom: 0;
