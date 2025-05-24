@@ -34,7 +34,7 @@ html,
 body {
 	margin: 0;
 	padding: 0;
-	background: #121212;
+	background: var(--bg-color);
 	scroll-behavior: smooth;
 }
 
@@ -179,6 +179,10 @@ label {
 	user-select: none;
 }
 
+input[type="checkbox"] {
+	accent-color: var(--accent-color);
+}
+
 input[type="checkbox"]:disabled {
 	cursor: not-allowed;
 }
@@ -198,7 +202,7 @@ li {
 		height: 100vh;
 		overflow: hidden;
 		flex: 1 0 auto;
-		border-right: 2px solid #212121;
+		border-right: 2px solid var(--control-bg-color);
 	}
 
 	#map {
@@ -212,26 +216,21 @@ li {
 
 @media (orientation: portrait) {
 	body {
-		min-height: 200vh;
 		flex-direction: column-reverse;
 	}
 
 	#panel {
 		flex: 1 1 50%;
-		border-top: 2px solid #212121;
+		border-top: 2px solid var(--control-bg-color);
 	}
 
 	#map {
-		flex: 1 0 50%;
-		min-height: calc(100vh - 56px); /* Dirty hack to adjust vh for url bar in Chrome mobile */
-		/* min-height: -webkit-fill-available; */
-		/* min-height: 50%; */
+		min-height: 100svh;
 	}
 
 	#button {
-		content: "";
-		width: 72px;
-		height: 36px;
+		width: 96px;
+		height: 48px;
 		left: 0;
 		right: 0;
 		bottom: 0;
